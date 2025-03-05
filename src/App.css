@@ -1,38 +1,147 @@
-.App {
+/* Styling the game container */
+.board-container {
+  margin: 20px auto;
+  max-width: 320px;
   text-align: center;
+  background: linear-gradient(135deg, #1e3c72, #2a5298); /* Deep blue gradient */
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+  border: 3px solid #ffffff;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Styling the heading */
+h1 {
+  font-size: 32px;
+  font-weight: bold;
+  color: #f8b400; /* Golden text */
+  text-transform: uppercase;
+  text-shadow: 2px 2px 8px rgba(248, 180, 0, 0.6);
+  margin-bottom: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* Styling each row */
+.board-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Styling each square */
+.square {
+  width: 90px;
+  height: 90px;
+  margin: 6px;
+  font-size: 34px;
+  font-weight: bold;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  border: 3px solid #f8b400; /* Golden border */
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  backdrop-filter: blur(5px);
+}
+
+/* Hover effect */
+.square:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+/* Adding an animation when a square is clicked */
+.square:active {
+  transform: scale(0.9);
+}
+
+/* Winner message */
+
+.winner-message {
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 20px;
+  padding: 15px 25px;
+  color: #fff;
+  background: linear-gradient(135deg, #ffcc00, #ff6600); /* Vibrant gold-orange */
+  border-radius: 10px;
+  display: inline-block;
+  box-shadow: 0px 5px 15px rgba(255, 140, 0, 0.7);
+  text-shadow: 3px 3px 10px rgba(255, 255, 255, 0.7);
+  animation: winnerFadeIn 1s ease-out, winnerGlow 1.5s infinite alternate;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Confetti animation */
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-100vh) rotate(0deg);
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.confetti {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  width: 10px;
+  height: 15px;
+  background: #ffcc00;
+  opacity: 0.8;
+  animation: confetti-fall 3s linear infinite;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
+/* Glow effect */
+@keyframes winnerGlow {
   from {
-    transform: rotate(0deg);
+    box-shadow: 0px 0px 15px rgba(255, 140, 0, 0.8);
   }
   to {
-    transform: rotate(360deg);
+    box-shadow: 0px 0px 25px rgba(255, 69, 0, 1);
   }
 }
+
+/* Smooth fade-in effect */
+@keyframes winnerFadeIn {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.play_again_button {
+  display: block;  /* Ensures it takes full width of parent */
+  margin: 20px auto;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #4CAF50, #2E7D32); /* Smooth Green Gradient */
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+  align-self: center;
+}
+
+.play_again_button:hover {
+  background: linear-gradient(135deg, #66BB6A, #388E3C);
+  transform: scale(1.05);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.play_again_button:active {
+  transform: scale(0.98);
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+}
+
